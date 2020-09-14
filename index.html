@@ -38,19 +38,42 @@
     <script>
       // Display current day time
       $("#currentDay").html(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
+
       // Create an interval that dynamically updates current day time and push it on the html
       setInterval(() => {
         const currentDay = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
         $("#currentDay").html(currentDay);
       }, 1000);
+
       // Define a function that creates a time block for each hour of the work day
-      for (let i = 0; i < 9; i++) {
-        let timeBlock = $("<div>").addClass("row");
-        let timeBlockHour = $("<div>").addClass("col-1");
-        let timeBlockContent = $("<div>").addClass("col-10");
-        let timeBlockSave = $("<div>").addClass("col-1");
-        timeBlock.append(timeBlockHour, timeBlockContent, timeBlockSave);
-        $(".container").append(timeBlock);
+      function createRows() {
+        let currentHour = moment().format("H");
+        let hourToInsert = "";
+        for (let i = 8; i < 17; i++) {
+          hourToInsert = moment().hour(i).format("HH:00");
+          let timeBlock = $("<div>").addClass("row");
+          let timeBlockHour = $("<div>").addClass("col-2 my-auto");
+          timeBlockHour.text(hourToInsert);
+          let timeBlockContent = $("<div>").addClass("col-9");
+          if (currentHour === hourToInsert) {
+            timeBlockContent.addClass("present");
+          } else if (currentHour > hourToInsert) {
+            timeBlockContent.addClass("past");
+          } else {
+            timeBlockContent.addClass("future");
+          }
+          let timeBlockSave = $("<div>").addClass("col-1 my-auto");
+          timeBlockSave.append(createSaveButton());
+          timeBlock.append(timeBlockHour, timeBlockContent, timeBlockSave);
+          $(".container").append(timeBlock);
+        }
+      }
+      createRows();
+
+      // Define a function that creates save buttons and inserts them into rows
+      function createSaveButton() {
+        let button = $("<button>").addClass("saveBtn");
+        return button;
       }
     </script>
   </body>
