@@ -95,9 +95,7 @@
         let myTextArea =
           event.target.parentElement.parentElement.childNodes[1].childNodes[0]
             .value;
-        if (myTextArea !== "") {
-          localStorage.setItem(myTextAreaId, myTextArea);
-        }
+        localStorage.setItem(myTextAreaId, myTextArea);
       });
 
       // Define a function that loads data from local storage if it's present
