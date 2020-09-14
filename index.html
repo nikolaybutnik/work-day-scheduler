@@ -36,7 +36,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="lib/moment/moment.min.js"></script>
     <script>
-      console.log(moment());
+      // Display current day time
+      $("#currentDay").html(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
+      // Create an interval that dynamically updates current day time and push it on the html
+      setInterval(() => {
+        const currentDay = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+        $("#currentDay").html(currentDay);
+      }, 1000);
+      // Define a function that creates a time block for each hour of the work day
+      for (let i = 0; i < 9; i++) {
+        let timeBlock = $("<div>").addClass("row");
+        let timeBlockHour = $("<div>").addClass("col-1");
+        let timeBlockContent = $("<div>").addClass("col-10");
+        let timeBlockSave = $("<div>").addClass("col-1");
+        timeBlock.append(timeBlockHour, timeBlockContent, timeBlockSave);
+        $(".container").append(timeBlock);
+      }
     </script>
   </body>
 </html>
