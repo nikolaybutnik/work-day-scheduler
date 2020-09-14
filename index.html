@@ -83,17 +83,21 @@
       // Define a function that creates save buttons, which gets inserted into the rows in the createRows() function.
       function createSaveButton() {
         let button = $("<button>").addClass("saveBtn");
-        button.text("HI");
+        button.attr("type", "submit")
+        let saveImg = $("<img src='save.png'>")
+        saveImg.width(30)
+        saveImg.addClass("saveImgBtn")
+        button.html(saveImg)  
         return button;
       }
 
       // Create an event listener for the buttons that takes the contents of textarea and saves them to local storage.
       $(".saveBtn").on("click", function (event) {
         let myTextAreaId =
-          event.target.parentElement.parentElement.childNodes[1].childNodes[0]
+          event.currentTarget.parentElement.parentElement.childNodes[1].childNodes[0]
             .id;
         let myTextArea =
-          event.target.parentElement.parentElement.childNodes[1].childNodes[0]
+          event.currentTarget.parentElement.parentElement.childNodes[1].childNodes[0]
             .value;
         localStorage.setItem(myTextAreaId, myTextArea);
       });
