@@ -9,13 +9,11 @@ setInterval(() => {
 
 // Define a function that creates a time block for each hour of the work day
 function createRows() {
-  let currentHour = moment().format("H");
   let currentHourCompare = moment().format("HH:00");
   let hourToInsert = "";
   for (let i = 8; i < 17; i++) {
     let textArea = $("<textarea>");
     hourToInsert = moment().hour(i).format("HH:00");
-    // textArea.attr("data-time", JSON.stringify(hourToInsert));
     textArea.attr("id", JSON.parse(JSON.stringify(hourToInsert)));
     let timeBlock = $("<div>").addClass("row");
     let timeBlockHour = $("<div>").addClass("col-1 hour");
@@ -45,18 +43,18 @@ createRows();
 // Define a function that creates save buttons, which gets inserted into the rows in the createRows() function.
 function createSaveButton() {
   let button = $("<button>").addClass("saveBtn");
-  button.attr("type", "submit")
-  let saveImg = $("<img src='assets/images/save.png'>")
-  saveImg.width(30)
-  saveImg.addClass("saveImgBtn")
-  button.html(saveImg)  
+  button.attr("type", "submit");
+  let saveImg = $("<img src='assets/images/save.png'>");
+  saveImg.width(30);
+  saveImg.addClass("saveImgBtn");
+  button.html(saveImg);
   return button;
 }
 
 // Create an event listener for the buttons that takes the contents of textarea and saves them to local storage.
 $(".saveBtn").on("click", function (event) {
   let myTextAreaId =
-  // Current target is used to make sure click event bubbles up if image is clicked.
+    // Current target is used to make sure click event bubbles up if image is clicked.
     event.currentTarget.parentElement.parentElement.childNodes[1].childNodes[0]
       .id;
   let myTextArea =
@@ -67,35 +65,15 @@ $(".saveBtn").on("click", function (event) {
 
 // Define a function that loads data from local storage if it's present
 function getData() {
-  document.getElementById("08:00").textContent = localStorage.getItem(
-    "08:00"
-  );
-  document.getElementById("09:00").textContent = localStorage.getItem(
-    "09:00"
-  );
-  document.getElementById("10:00").textContent = localStorage.getItem(
-    "10:00"
-  );
-  document.getElementById("11:00").textContent = localStorage.getItem(
-    "11:00"
-  );
-  document.getElementById("12:00").textContent = localStorage.getItem(
-    "12:00"
-  );
-  document.getElementById("13:00").textContent = localStorage.getItem(
-    "13:00"
-  );
-  document.getElementById("14:00").textContent = localStorage.getItem(
-    "14:00"
-  );
-  document.getElementById("14:00").textContent = localStorage.getItem(
-    "14:00"
-  );
-  document.getElementById("15:00").textContent = localStorage.getItem(
-    "15:00"
-  );
-  document.getElementById("16:00").textContent = localStorage.getItem(
-    "16:00"
-  );
+  document.getElementById("08:00").textContent = localStorage.getItem("08:00");
+  document.getElementById("09:00").textContent = localStorage.getItem("09:00");
+  document.getElementById("10:00").textContent = localStorage.getItem("10:00");
+  document.getElementById("11:00").textContent = localStorage.getItem("11:00");
+  document.getElementById("12:00").textContent = localStorage.getItem("12:00");
+  document.getElementById("13:00").textContent = localStorage.getItem("13:00");
+  document.getElementById("14:00").textContent = localStorage.getItem("14:00");
+  document.getElementById("14:00").textContent = localStorage.getItem("14:00");
+  document.getElementById("15:00").textContent = localStorage.getItem("15:00");
+  document.getElementById("16:00").textContent = localStorage.getItem("16:00");
 }
 getData();
