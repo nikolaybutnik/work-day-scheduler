@@ -1,6 +1,9 @@
 # Work Day Scheduler
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A project done as part of Carleton University Coding Bootcamp. The focus was on creating an interactive web-based work day organizer. The completed application displays a set of time blocks where user can write personalized notes, and click the save button to save the notes to local storage. Each time block is color coded based on whether the time block is in the past, present or future.
+
 [Link to application](https://nikolaybutnik.github.io/work-day-scheduler/)
 
 ![Work Day Shceduler Image](https://github.com/nikolaybutnik/work-day-scheduler/blob/master/assets/images/work-day-scheduler-screenshot.png?raw=true)
